@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1, user-scalable=0">
+<meta charset="utf-8" />
+<link rel="stylesheet" href="css/core.css">
+<link rel="stylesheet" href="css/main.css">
+<title>MySNS</title>
+<style>
+.page-mnu1	 {
+    background-color: #333; /* page-mnu 배경색을 짙은 회색으로 변경 */
+}
+body.dark-mode {
+	background-color: #333; /* 짙은 회색 배경색으로 변경 */
+    color: white; /* 텍스트 색상을 밝은 색으로 변경 */
+}
+body.dark-mode .page-mnu {
+    background-color: #333; /* 짙은 회색 배경색으로 변경 */
+}
+
+body.dark-mode .page-mnu .menu {
+    color: #fff; /* 다크 모드에서의 텍스트 색상을 밝은 색으로 변경 */
+}
+body.dark-mode .set {
+    background-color: #555; /* 다크 모드에서의 버튼 배경색을 어두운 색으로 변경 */
+    color: #fff; /* 다크 모드에서의 버튼 텍스트 색상을 밝은 색으로 변경 */
+}
+body.dark-mode .page-footer {
+    background-color: #555; /* 다크 모드에서의 버튼 배경색을 어두운 색으로 변경 */
+    color: #fff; /* 다크 모드에서의 버튼 텍스트 색상을 밝은 색으로 변경 */
+}
+.pad-4 { padding: 0 4px; }
+.pad-8 { padding: 0 8px; }
+input[type=file] {
+    padding: 0px;
+    border: none;
+    outline: none;
+    font-size: 0.95em;
+}
+.desc {
+    float: left;
+    width: 100%;
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: #888;
+}
+</style>
+</head>
+<body>
+    <div class="page-hdr">MySNS</div>
+    <div class="page-body">
+        <div class="page-mnu">
+			<div class="menu" onclick="goHome()">홈</div>
+			<div class="menu" onclick="showFriends()">친구보기</div>
+            <div class="menu" onclick="showUserInfo()">내정보</div>
+			<div class="menu1" onclick="goSet()">설정</div>
+		</div>
+		<div class="section pad-16 mtop-30">
+			<div class="section pad-8 mbot-20">
+				<input type="submit" class="set" value="다크모드" onclick="toggleDarkMode()">
+			</div>
+		</div>
+    </div>
+    <div class="page-footer">Copyright: mysns.com, 202x</div>
+</body>
+</html>
+
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/core.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+	const darkModeStatus = localStorage.getItem("darkMode");
+
+            // 다크 모드 설정이 "enabled"일 경우 다크 모드 적용
+    if (darkModeStatus === "enabled") {
+        enableDarkMode();
+    }
+});
+
+function toggleDarkMode() {
+    const body = document.body;
+    const darkModeStatus = localStorage.getItem("darkMode");
+
+    if (darkModeStatus === "enabled") {
+        disableDarkMode();
+    } else {
+        enableDarkMode();
+   }
+}
+
+function enableDarkMode() {
+    document.body.classList.add('dark-mode');
+    localStorage.setItem("darkMode", "enabled");
+}
+
+function disableDarkMode() {
+    document.body.classList.remove('dark-mode');
+    localStorage.setItem("darkMode", "disabled");
+}
+function goHome() {
+	window.location.href = "main.html";
+}
+function showFriends() {
+    window.location.href = "friend.html";
+}
+function showUserInfo() {
+    window.location.href = "userInfo.html";
+}
+function goSet() {
+	window.location.href = "setting.html";
+}
+</script>

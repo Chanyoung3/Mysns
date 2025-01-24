@@ -9,6 +9,7 @@ import org.json.simple.parser.ParseException;
 import util.ConnectionPool;
 
 public class FriendDAO {
+	
 	public String insert(String uid, String frid) throws NamingException, SQLException, ParseException {
 		Connection conn = ConnectionPool.get();
 		PreparedStatement stmt = null;
